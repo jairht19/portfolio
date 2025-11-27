@@ -11,20 +11,20 @@ const heroStats = [
   <section class="pt-12 md:pt-20">
     <div class="grid md:grid-cols-[1.4fr,1fr] gap-10 items-center">
       <div class="space-y-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-sky-400 font-semibold">
+        <p class="text-xs uppercase tracking-[0.2em] text-[var(--color-accent-muted)] font-semibold">
           Oracle NetSuite · Full-Stack
         </p>
-        <h1 class="text-3xl md:text-4xl font-semibold text-slate-50 leading-tight">
+        <h1 class="text-3xl md:text-4xl font-semibold text-[var(--color-text)] leading-tight">
           Jair Hernández · desarrollo soluciones escalables sobre NetSuite y la
           web.
         </h1>
-        <p class="text-sm md:text-base text-slate-200 leading-relaxed">
+        <p class="text-sm md:text-base text-[var(--color-text-soft)] leading-relaxed">
           Soy Desarrollador Senior de NetSuite con más de seis años dentro del
           ecosistema ERP. Construyo SuiteApps, automatizaciones, reportes
           financieros y conectores con terceros usando las mejores prácticas de
           SuiteScript, SuiteQL, SuiteTalk y CI/CD.
         </p>
-        <p class="text-sm md:text-base text-slate-200 leading-relaxed">
+        <p class="text-sm md:text-base text-[var(--color-text-soft)] leading-relaxed">
           Complemento el backend de NetSuite con interfaces modernas en Vue/Nuxt
           y servicios en la nube, conectando procesos de negocio con productos
           digitales que aportan datos claros y experiencias simples.
@@ -33,13 +33,13 @@ const heroStats = [
         <div class="flex flex-wrap gap-3 text-sm">
           <a
             href="#projects"
-            class="px-5 py-2 rounded-full bg-sky-500 text-slate-950 font-semibold hover:bg-sky-400 transition-colors"
+            class="px-5 py-2 rounded-full bg-[var(--color-accent)] text-[var(--color-on-accent)] font-semibold hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Ver proyectos
           </a>
           <a
             href="#contact"
-            class="px-5 py-2 rounded-full border border-slate-700 text-slate-100 hover:border-sky-400 hover:text-sky-300 transition-colors"
+            class="px-5 py-2 rounded-full border border-[var(--color-border-strong)] text-[var(--color-text)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
           >
             Hablemos
           </a>
@@ -49,12 +49,12 @@ const heroStats = [
           <div
             v-for="stat in heroStats"
             :key="stat.label"
-            class="border border-slate-800 rounded-xl p-4 bg-slate-900/60"
+            class="border border-[var(--color-border)] rounded-xl p-4 theme-panel-card"
           >
-            <p class="text-2xl font-semibold text-slate-50">
+            <p class="text-2xl font-semibold text-[var(--color-text)]">
               {{ stat.value }}
             </p>
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">
+            <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
               {{ stat.label }}
             </p>
           </div>
@@ -63,47 +63,47 @@ const heroStats = [
 
       <div class="relative">
         <div
-          class="absolute inset-0 bg-gradient-to-tr from-sky-500/20 via-fuchsia-500/10 to-emerald-400/10 blur-3xl"
+          class="absolute inset-0 bg-gradient-to-tr from-[var(--color-accent)]/30 via-[var(--color-accent-muted)]/20 to-[var(--color-border-strong)]/20 blur-3xl"
         />
         <div
-          class="relative border border-slate-800 rounded-2xl p-4 bg-slate-900/70"
+          class="relative border border-[var(--color-border)] rounded-2xl p-4 theme-panel-alt"
         >
-          <p class="text-xs text-slate-400 mb-2">
+          <p class="text-xs text-[var(--color-text-muted)] mb-2">
             Stack principal
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               SuiteScript 2.1
             </span>
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               SuiteAnalytics Workbook
             </span>
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               SuiteQL
             </span>
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               SDF
             </span>
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               Vue / Nuxt
             </span>
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               TypeScript
             </span>
             <span
-              class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200"
+              class="px-3 py-1 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-chip)] text-[var(--color-text-soft)]"
             >
               CI/CD Bitbucket
             </span>

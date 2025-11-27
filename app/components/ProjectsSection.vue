@@ -1,13 +1,20 @@
 <script setup lang="ts">
 interface Project {
   title: string;
-  type: 'NetSuite' | 'Web';
+  type: string;
   tech: string[];
   description: string;
   highlight?: string;
 }
 
 const projects: Project[] = [
+  {
+    title: 'Kiosko de Facturación',
+    type: 'NetSuite - WEB',
+    tech: ['SuiteScript 2.1', 'Vue', 'Node.js', 'TypeScript', 'Saved Searches', 'Bulma CSS'],
+    description:
+      'Portal proporcionado a clientes para realizar el timbrado correspondiente de facturas de venta con validaciones fiscales y seguimiento en tiempo real.',
+  },
   {
     title: 'SuiteApp · Detalle de Impuestos (DIOT)',
     type: 'NetSuite',
@@ -34,6 +41,23 @@ const projects: Project[] = [
       'Aplicación web para administrar archivos en S3 con interfaz moderna, autenticación y operaciones CRUD.',
   },
 ];
+
+const getTypeColor = (type: string) => {
+  const normalized = type.toLowerCase();
+  const includesNetSuite = normalized.includes('netsuite');
+  const includesWeb = normalized.includes('web');
+
+  if (includesNetSuite && includesWeb) {
+    return 'var(--color-category-hybrid)';
+  }
+  if (includesNetSuite) {
+    return 'var(--color-category-netsuite)';
+  }
+  if (includesWeb) {
+    return 'var(--color-category-web)';
+  }
+  return 'var(--color-accent)';
+};
 </script>
 
 <template>
@@ -46,26 +70,28 @@ const projects: Project[] = [
       <article
         v-for="p in projects"
         :key="p.title"
-        class="border border-slate-800 rounded-xl p-4 bg-slate-900/60"
+        class="border border-[var(--color-border)] rounded-xl p-4 theme-panel"
       >
-        <p class="text-xs uppercase tracking-[0.18em] mb-1"
-          :class="p.type === 'NetSuite' ? 'text-sky-400' : 'text-emerald-300'">
+        <p
+          class="text-xs uppercase tracking-[0.18em] mb-1"
+          :style="{ color: getTypeColor(p.type) }"
+        >
           {{ p.type }}
         </p>
         <h3 class="font-semibold mb-2">
           {{ p.title }}
         </h3>
-        <p class="text-sm text-slate-200 mb-3">
+        <p class="text-sm text-[var(--color-text-soft)] mb-3">
           {{ p.description }}
         </p>
-        <p v-if="p.highlight" class="text-xs text-slate-400 mb-3">
+        <p v-if="p.highlight" class="text-xs text-[var(--color-text-muted)] mb-3">
           {{ p.highlight }}
         </p>
-        <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
+        <div class="flex flex-wrap gap-2 text-[11px] text-[var(--color-text-muted)]">
           <span
             v-for="t in p.tech"
             :key="t"
-            class="px-2 py-1 rounded-full bg-slate-800 border border-slate-700"
+            class="px-2 py-1 rounded-full bg-[var(--color-chip)] border border-[var(--color-border-strong)]"
           >
             {{ t }}
           </span>

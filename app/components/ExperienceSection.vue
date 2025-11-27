@@ -95,6 +95,14 @@ const languages: Language[] = [
   { name: 'Español', level: 100, description: 'Nativo' },
   { name: 'Inglés', level: 60, description: 'Lectura técnica y comunicación' },
 ];
+
+const categoryColors: Record<string, string> = {
+  'NetSuite & ERP': 'var(--color-category-netsuite)',
+  WEB: 'var(--color-category-web)',
+};
+
+const getCategoryColor = (category: string) =>
+  categoryColors[category] ?? 'var(--color-accent)';
 </script>
 
 <template>
@@ -108,27 +116,30 @@ const languages: Language[] = [
         <article
           v-for="exp in experiences"
           :key="exp.company"
-          class="border border-slate-800 rounded-2xl p-5 bg-slate-900/60"
+          class="border border-[var(--color-border)] rounded-2xl p-5 theme-panel"
         >
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
             <div>
-              <p class="text-sm font-semibold text-slate-100">
+              <p class="text-sm font-semibold text-[var(--color-text)]">
                 {{ exp.role }} · {{ exp.company }}
               </p>
-              <p class="text-xs text-slate-400">
+              <p class="text-xs text-[var(--color-text-muted)]">
                 {{ exp.period }}
               </p>
             </div>
-            <span class="text-[11px] uppercase tracking-[0.18em]" :class="exp.category !== 'WEB' ? 'text-sky-400' : 'text-emerald-300'">
+            <span
+              class="text-[11px] uppercase tracking-[0.18em]"
+              :style="{ color: getCategoryColor(exp.category) }"
+            >
               {{ exp.category }}
             </span>
           </div>
 
-          <p v-if="exp.focus" class="text-sm text-slate-200 mb-3">
+          <p v-if="exp.focus" class="text-sm text-[var(--color-text-soft)] mb-3">
             {{ exp.focus }}
           </p>
 
-          <ul class="text-sm text-slate-200 list-disc pl-4 space-y-1">
+          <ul class="text-sm text-[var(--color-text-soft)] list-disc pl-4 space-y-1">
             <li
               v-for="task in exp.responsibilities"
               :key="task"
@@ -141,11 +152,11 @@ const languages: Language[] = [
     </div>
 
     <div class="grid gap-6 md:grid-cols-2">
-      <div class="border border-slate-800 rounded-2xl p-5 bg-slate-900/60">
+      <div class="border border-[var(--color-border)] rounded-2xl p-5 theme-panel">
         <h3 class="text-lg font-semibold mb-3">
           Educación
         </h3>
-        <ul class="space-y-3 text-sm text-slate-200">
+        <ul class="space-y-3 text-sm text-[var(--color-text-soft)]">
           <li
             v-for="edu in education"
             :key="edu.title"
@@ -153,17 +164,17 @@ const languages: Language[] = [
             <p class="font-medium">
               {{ edu.title }}
             </p>
-            <p class="text-slate-300">
+            <p class="text-[var(--color-text-muted)]">
               {{ edu.school }}
             </p>
-            <p class="text-xs text-slate-400">
+            <p class="text-xs text-[var(--color-text-muted)] opacity-80">
               {{ edu.years }}
             </p>
           </li>
         </ul>
       </div>
 
-      <div class="border border-slate-800 rounded-2xl p-5 bg-slate-900/60">
+      <div class="border border-[var(--color-border)] rounded-2xl p-5 theme-panel">
         <h3 class="text-lg font-semibold mb-3">
           Idiomas
         </h3>
@@ -173,19 +184,29 @@ const languages: Language[] = [
             :key="lang.name"
           >
             <div class="flex items-center justify-between text-sm">
-              <p class="font-medium text-slate-100">
+              <p class="font-medium text-[var(--color-text)]">
                 {{ lang.name }}
               </p>
-              <span class="text-slate-400 text-xs">
+              <span class="text-[var(--color-text-muted)] text-xs">
                 {{ lang.description }}
               </span>
             </div>
-            <div class="h-2 bg-slate-800 rounded-full overflow-hidden mt-2">
+            <div
+              class="h-2 theme-progress-track rounded-full overflow-hidden mt-2"
+              role="progressbar"
+              :aria-valuenow="lang.level"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              :aria-label="`Nivel de ${lang.name}`"
+            >
               <div
-                class="h-full bg-gradient-to-r from-sky-500 to-cyan-300"
+                class="h-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-muted)]"
                 :style="{ width: `${lang.level}%` }"
               />
             </div>
+            <p class="text-xs text-[var(--color-text-muted)] mt-1">
+              {{ lang.level }}%
+            </p>
           </div>
         </div>
       </div>
