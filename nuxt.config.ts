@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: '/portfolio/',
     head: {
       title: 'Jair Hernández | NetSuite & Full-Stack Developer',
       meta: [
@@ -25,5 +26,8 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: 'icon', type: 'image/png', href: '/jh-logo.png' }],
     },
+  },
+  nitro: {
+    preset: 'github-pages',
   },
 });
